@@ -1,0 +1,14 @@
+{$CLEO .csi}
+
+thread "Vehicle Pools"
+
+:main
+
+repeat
+until 
+end_thread
+
+:_ZN6CPools15ms_pVehiclePoolE
+hex
+ "_ZN6CPools15ms_pVehiclePoolE" 00
+end
