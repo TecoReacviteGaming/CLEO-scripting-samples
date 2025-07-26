@@ -14,7 +14,7 @@ for 1@ = 35584 step 0x100
     0DD8: 2@ = read_mem_addr 0@ size 1 add_ib 0 // android 
     000A: 0@ += 1 
     if and
-        0029:2@ >= 0 
+        0029: 2@ >= 0 
         001B: 128 > 2@ 
     then
         005A: 3@ += 2@ // Stored vehicle in 3@ variable
