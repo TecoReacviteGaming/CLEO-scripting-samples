@@ -1,0 +1,34 @@
+{$CLEO .csi}
+
+thread "Pedestrians Pools"
+
+:main
+wait 0 ms
+0DD0: 0@ = get_label_addr @_ZN6CPools11ms_pPedPoolE // android 
+0DD1: 0@ = get_func_addr_by_cstr_name 0@
+0DD8: 0@ = read_mem_addr 0@ size 4 add_ib 0 // android 
+000A: 0@ += 4 
+0DD8: 0@ = read_mem_addr 0@ size 4 add_ib 0 // android 
+0006: 1@ = 0 
+for 1@ = 35584 step 0x100
+    0DD8: 2@ = read_mem_addr 0@ size 1 add_ib 0 // android 
+    000A: 0@ += 1 
+    if and
+        0029: 2@ >= 0 
+        001B: 128 > 2@ 
+    then
+        005A: 3@ += 2@ // Stored peds in 3@ variable
+        if and
+            056D:    actor 3@ defined 
+            8118:    not actor 3@ dead 
+        then
+            // Your code here on what to do with defined Actor
+        end
+    end
+end
+end_thread
+
+:_ZN6CPools11ms_pPedPoolE
+hex
+ "_ZN6CPools11ms_pPedPoolE" 00
+end
