@@ -3,9 +3,29 @@
 thread "Vehicle Pools"
 
 :main
-
-repeat
-until 
+wait 0 ms
+0DD0: 0@ = get_label_addr @_ZN6CPools15ms_pVehiclePoolE // android 
+0DD1: 0@ = get_func_addr_by_cstr_name 0@
+0DD8: 0@ = read_mem_addr 0@ size 4 add_ib 0 // android 
+000A: 0@ += 4 
+0DD8: 0@ = read_mem_addr 0@ size 4 add_ib 0 // android 
+0006: 2@ = 0 
+for 2@ = 35584 step 0x100
+    0DD8: 1@ = read_mem_addr 0@ size 1 add_ib 0 // android 
+    000A: 0@ += 1 
+    if and
+        0029: 3@ >= 0 
+        001B: 128 > 3@ 
+    then
+        005A: 3@ += 2@ // Stored vehicle in 3@ variable
+        if and
+            056E:    car 3@ defined 
+            8119:    not car 3@ wrecked 
+        then
+            // Your code here on what to do with defined Vehicle
+        end
+    end
+end
 end_thread
 
 :_ZN6CPools15ms_pVehiclePoolE
