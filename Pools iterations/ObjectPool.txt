@@ -1,6 +1,6 @@
 {$CLEO .csi}
 
-thread "Vehicle Pools"
+thread "Object Pools"
 
 :main
 wait 0 ms
