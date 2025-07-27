@@ -3,21 +3,32 @@
 thread "Vehicle Dummy Coord"
 
 :main
-0DD0: temporaryVar0 = get_label_addr @_ZN10CModelInfo16ms_modelInfoPtrsE // android 
-0DD1: temporaryVar0 = get_func_addr_by_cstr_name temporaryVar0 // android 
-0441: temporaryVar1 = car definedVehicle model
-0012: temporaryVar1 *= 4 
-005C: temporaryVar1 += temporaryVar0
-0DD8: temporaryVar1 = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
-000A: temporaryVar1 += 116 
-0DD8: temporaryVar1 = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
-000A: temporaryVar1 += vehicleDummy
-0DD8: posX = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
-000A: temporaryVar1 += 0x4
-0DD8: posY = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
-000A: temporaryVar1 += 0x4
-0DD8: posZ = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
-return
+wait 0 ms
+if and // Check if player is in the car 
+0449:    actor $PLAYER_ACTOR in_a_car 
+0611:    not actor $PLAYER_ACTOR performing_animation "CAR_sitp" 
+0611:    not actor $PLAYER_ACTOR performing_animation "CAR_sitplo" 
+jf @main
+03C0: 0@ = actor $PLAYER_ACTOR car // Player car 
+0DD0: 1@ = get_label_addr @_ZN10CModelInfo16ms_modelInfoPtrsE // android 
+0DD1: 1@ = get_func_addr_by_cstr_name 1@ // android 
+0441: 2@ = car 0@ model // Get player car model 
+0012: 2@ *= 4 
+005C: 2@ += 1@
+0DD8: 2@ = read_mem_addr 2@ size 4 add_ib 0 // android 
+000A: 2@ += 116 
+0DD8: 2@ = read_mem_addr 2@ size 4 add_ib 0 // android 
+000A: 2@ += 84 // Engine 
+0DD8: 3@ = read_mem_addr 2@ size 4 add_ib 0 // android 
+000A: 2@ += 0x4
+0DD8: 4@ = read_mem_addr 2@ size 4 add_ib 0 // android 
+000A: 2@ += 0x4
+0DD8: 5@ = read_mem_addr 2@ size 4 add_ib 0 // android 
+
+// 3@, 4@, 5@ are XYZ coordinate of car dummy part
+016F: create_particle 3 rotation_factor 0.0 size 1.0 intensity 150 flags 22 98 181 at 3@ 4@ 5@
+end_thread
+
 // 116+0 (headlight)
 // 116+12 (backlight)
 // 116+84 (engine)
@@ -27,3 +38,8 @@ return
 // 116+48 (front seat)
 // 116+60 (back seat)
 // 116+660 (nitro TF)
+
+:_ZN10CModelInfo16ms_modelInfoPtrsE
+hex
+ "_ZN10CModelInfo16ms_modelInfoPtrsE" 00
+end
