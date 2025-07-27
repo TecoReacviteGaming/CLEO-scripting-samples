@@ -7,7 +7,7 @@ wait 0
 0247: load_model 400 // Vehicle (LANDSTAL)
 0247: load_model 964 // Object (CJ_METAL_CRATE)
 0247: load_model #TRUTH // Ped (TRUTH)
-038B: load_requested_models 
+038B: load_requested_models // Request to load model that are defined by opcode 0247
 if and
 0248:  model 400 available 
 0248:  model 964 available 
