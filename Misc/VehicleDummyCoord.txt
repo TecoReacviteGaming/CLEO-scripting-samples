@@ -1,0 +1,29 @@
+{$CLEO .csi}
+
+thread "Vehicle Dummy Coord"
+
+:main
+0DD0: temporaryVar0 = get_label_addr @_ZN10CModelInfo16ms_modelInfoPtrsE // android 
+0DD1: temporaryVar0 = get_func_addr_by_cstr_name temporaryVar0 // android 
+0441: temporaryVar1 = car definedVehicle model
+0012: temporaryVar1 *= 4 
+005C: temporaryVar1 += temporaryVar0
+0DD8: temporaryVar1 = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
+000A: temporaryVar1 += 116 
+0DD8: temporaryVar1 = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
+000A: temporaryVar1 += vehicleDummy
+0DD8: posX = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
+000A: temporaryVar1 += 0x4
+0DD8: posY = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
+000A: temporaryVar1 += 0x4
+0DD8: posZ = read_mem_addr temporaryVar1 size 4 add_ib 0 // android 
+return
+// 116+0 (headlight)
+// 116+12 (backlight)
+// 116+84 (engine)
+// 116+96 (fuel tank)
+// 116+120 (front door)
+// 116+72 (exhaust)
+// 116+48 (front seat)
+// 116+60 (back seat)
+// 116+660 (nitro TF)
