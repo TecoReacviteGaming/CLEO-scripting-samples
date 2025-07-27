@@ -4,5 +4,29 @@ thread "Load Models"
 
 :main
 wait 0
-02
+0247: load_model 400 // Vehicle (LANDSTAL)
+0247: load_model 964 // Object (CJ_METAL_CRATE)
+0247: load_model #TRUTH // Ped (TRUTH)
+038B: load_requested_models 
+if and
+0248:  model 400 available 
+0248:  model 964 available 
+0248:  model #TRUTH available 
+jf @main
+
+// Code examples after loaded the models
+04C4: store_coords_to 1@ 2@ 3@ from_actor $PLAYER_ACTOR with_offset 0.0 8.0 0.0 // Store coord with offset from player
+00A5: 0@ = create_car 400 at 1@ 2@ 3@ // Creates vehicle
+01C3: remove_references_to_car 0@ 
+//
+0107: 0@ = create_object 964 at 1@ 2@ 3@ // Creates object
+01C4: remove_references_to_object 0@ // This object will now disappear when the player looks away
+//
+009A: 0@ = create_actor_pedtype 4 model #TRUTH at 1@ 2@ 3@ // Creates actor 
+01C2: remove_references_to_actor 0@ // Like turning an actor into a random pedestrian
+
+// Release the model as it's not necessary anymore
+0249: release_model 400 
+0249: release_model 964 
+0249: release_model #TRUTH 
 end_thread
