@@ -8,12 +8,7 @@ if
 00DF:   actor $PLAYER_ACTOR driving 
 jf @main
 03C0: 0@ = actor $PLAYER_ACTOR car 
-0A97: 2@ = car 0@ struct
-0D4E: 3@ = read_struct 2@ offset 2420 size 1 // keep newOpcodes ordering for SB 
-0DD0: 1@ = get_label_addr @_ZN11CAutomobile19GetNumContactWheelsEv // android 
-0DD1: 1@ = get_func_addr_by_cstr_name 1@ // android 
-0DD3: context_set_reg 0 value 2@ 
-0DD2: context_call_func 1@
-0DD4: 2@ = context_get_reg 0 
-0AD0: show_formatted_text_lowpriority "Offset: %d Mem: %d" time 980 3@ 2@
+0A97: 1@ = car 0@ struct
+0D4E: 1@ = read_struct 1@ offset 2420 size 1 // keep newOpcodes ordering for SB 
+0AD0: show_formatted_text_lowpriority "Contacted wheels: %d" time 980 1@ 
 end_thread
