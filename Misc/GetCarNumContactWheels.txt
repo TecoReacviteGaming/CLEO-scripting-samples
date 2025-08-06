@@ -12,8 +12,10 @@ jf @main
 if
     847A:   not actor $PLAYER_ACTOR driving_bike 
 then
+    // Car
     0D4E: 1@ = read_struct 1@ offset 2420 size 1 // keep newOpcodes ordering for SB 
 else
+    // Bike
     0D4E: 1@ = read_struct 1@ offset 2072 size 1 // keep newOpcodes ordering for SB 
 end
 0AD0: show_formatted_text_lowpriority "Contacted wheels: %d" time 980 1@ 
