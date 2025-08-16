@@ -31,7 +31,7 @@ while true
     056D:   actor _actor1 defined 
     056D:   actor _actor2 defined 
     056D:   actor _actor3 defined 
-    jf continue 
+    jf break
     0762: AS_actor _actor1 dies 
     0762: AS_actor _actor2 dies 
     0762: AS_actor _actor3 dies 
