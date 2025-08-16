@@ -17,28 +17,30 @@ const // We're defining our extended variables that is beyond the variable limit
 end
 
 // These are code examples of how to use the extended variables
-:main
-wait 0 ms
-0247: load_model 7 
-038B: load_requested_models 
-if
-0248:   model 7 available 
-jf @main 
-04C4: store_coords_to _coord1 _coord2 _coord3 from_actor $PLAYER_ACTOR with_offset 0.0 5.0 0.0 
-009A: _actor1 = create_actor_pedtype 4 model 7 at _coord1 _coord2 _coord3 
-009A: _actor2 = create_actor_pedtype 4 model 7 at _coord1 _coord2 _coord3 
-009A: _actor3 = create_actor_pedtype 4 model 7 at _coord1 _coord2 _coord3 
-if and
-056D:   actor _actor1 defined 
-056D:   actor _actor2 defined 
-056D:   actor _actor3 defined 
-jf @main
-0762: AS_actor _actor1 dies 
-0762: AS_actor _actor2 dies 
-0762: AS_actor _actor3 dies 
-01C2: remove_references_to_actor _actor1 
-01C2: remove_references_to_actor _actor2 
-01C2: remove_references_to_actor _actor3 
-0249: release_model 7 
+while true
+    wait 0 ms
+    0247: load_model 7 
+    038B: load_requested_models 
+    if
+    0248:   model 7 available 
+    jf continue 
+    04C4: store_coords_to _coord1 _coord2 _coord3 from_actor $PLAYER_ACTOR with_offset 0.0 5.0 0.0 
+    009A: _actor1 = create_actor_pedtype 4 model 7 at _coord1 _coord2 _coord3 
+    009A: _actor2 = create_actor_pedtype 4 model 7 at _coord1 _coord2 _coord3 
+    009A: _actor3 = create_actor_pedtype 4 model 7 at _coord1 _coord2 _coord3 
+    if and
+    056D:   actor _actor1 defined 
+    056D:   actor _actor2 defined 
+    056D:   actor _actor3 defined 
+    jf continue 
+    0762: AS_actor _actor1 dies 
+    0762: AS_actor _actor2 dies 
+    0762: AS_actor _actor3 dies 
+    01C2: remove_references_to_actor _actor1 
+    01C2: remove_references_to_actor _actor2 
+    01C2: remove_references_to_actor _actor3 
+    0249: release_model 7 
+    break
+end
 0AC9: free_allocated_memory 0@ // Free allocated memory, so that it doesn't cause memory leaks (except the script was designed to run forever)
 end_thread
