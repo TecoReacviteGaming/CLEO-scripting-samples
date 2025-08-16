@@ -10,7 +10,7 @@ const // We're defining our extended variables that is beyond the variable limit
     _actor1 = &0(0@,1i)
     _actor2 = &4(0@,1i)
     _actor3 = &8(0@,1i)
-
+    
     _coord1 = &12(0@,1i)
     _coord2 = &16(0@,1i)
     _coord3 = &20(0@,1i)
