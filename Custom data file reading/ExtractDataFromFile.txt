@@ -13,7 +13,7 @@ then
     while 0AD7: read_string_from_file 1@ to 0@ size 64 //IF and SET 
         // Ignore comments
         0DD8: 6@ = read_mem_addr 0@ size 4 fix_ib 0 // android 
-        000A: 6@ += 0x0 
+        000A: 6@ += 0x0 // Array of buffers
         if and
             8039:   not 6@ == 0x23 // #
             8039:   not 6@ == 0x3B // ;
