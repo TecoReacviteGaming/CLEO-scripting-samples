@@ -1,0 +1,5 @@
+# this is comments and will be ignored
+data 12345, float 10.0, string HelloWorld
+
+; second comments, blank spaces are ignored too
+data 6789, float 50.0, string HelloWorld
