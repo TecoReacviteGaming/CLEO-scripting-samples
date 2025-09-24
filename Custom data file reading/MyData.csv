@@ -3,3 +3,8 @@ data 12345, float 10.0, string HelloWorld
 
 ; second comments, blank spaces are ignored too
 data 6789, float 50.0, string HelloWorld
+data 163, float 36.0, string Data01
+data 271, float 61.0, string Data02
+data 638, float 74.0, string Data03
+data 792, float 19.0, string Data04
+data 118, float 26.0, string Data05
