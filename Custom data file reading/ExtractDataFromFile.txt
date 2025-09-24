@@ -1,6 +1,7 @@
 {$CLEO .csi}
 
 thread "Extract Data From File"
+// Using modern CLEO opcode to do file reading and extract!
 
 :main
 wait 0 ms
