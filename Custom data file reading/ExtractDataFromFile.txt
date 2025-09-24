@@ -12,17 +12,17 @@ then
     0AC8: 0@ = allocate_memory_size 64 
     while 0AD7: read_string_from_file 1@ to 0@ size 64 //IF and SET 
         // Ignore comments
-        0DD8: 10@ = read_mem_addr 0@ size 4 fix_ib 0 // android 
-        000A: 10@ += 0x0 
+        0DD8: 6@ = read_mem_addr 0@ size 4 fix_ib 0 // android 
+        000A: 6@ += 0x0 
         if and
-            8039:   not 10@ == 0x23 // #
-            8039:   not 10@ == 0x3B // ;
+            8039:   not 6@ == 0x23 // #
+            8039:   not 6@ == 0x3B // ;
         jf continue
         
         // Extract data
-        if 0AD4: 3@ = scan_string 0@ format "data %d, float %f, string %s" 4@ 5@ 6@v //IF and SET 
+        if 0AD4: 2@ = scan_string 0@ format "data %d, float %f, string %s" 3@ 4@ 5@v //IF and SET 
         then
-            0AD1: show_formatted_text_highpriority "Data: %d %f %s" time 2000 4@ 5@ 6@v 
+            0AD1: show_formatted_text_highpriority "Data: %d %f %s" time 2000 3@ 4@ 5@v 
         end
     end
     0AC9: free_allocated_memory 0@ 
