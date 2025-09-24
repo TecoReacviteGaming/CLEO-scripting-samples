@@ -22,7 +22,7 @@ then
         // Extract data
         if 0AD4: 2@ = scan_string 0@ format "data %d, float %f, string %s" 3@ 4@ 5@v //IF and SET 
         then
-            0AD1: show_formatted_text_highpriority "Data: %d %f %s" time 2000 3@ 4@ 5@v 
+            0AD1: show_formatted_text_highpriority "%d Data: %d %f %s" time 2000 2@ 3@ 4@ 5@v 
         end
     end
     0AC9: free_allocated_memory 0@ 
