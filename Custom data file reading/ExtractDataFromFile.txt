@@ -9,8 +9,8 @@ if 0AAB:  file_exists "techvite\MyData.csv" // extensions can be anything, we us
 jf @main
 if 0A9A: 1@ = openfile "\files\techvite\MyData.csv" mode "rt" // IF and SET 
 then
-    0AC8: 0@ = allocate_memory_size 64 
-    while 0AD7: read_string_from_file 1@ to 0@ size 64 //IF and SET 
+    0AC8: 0@ = allocate_memory_size 32 
+    while 0AD7: read_string_from_file 1@ to 0@ size 32 //IF and SET 
         // Ignore comments
         0DD8: 6@ = read_mem_addr 0@ size 4 fix_ib 0 // android 
         000A: 6@ += 0x0 
